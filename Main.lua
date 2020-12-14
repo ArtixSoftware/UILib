@@ -19,7 +19,7 @@ function lib:CreateGui(ProductTextInput)
 	local Frame = Instance.new("Frame")
 	local ProductText = Instance.new("TextLabel")
 
-	ScreenGui.Parent = game.CoreGui
+	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") -- game.CoreGui
 	ScreenGui.ResetOnSpawn = false
 
 	Frame.Parent = ScreenGui
@@ -577,20 +577,20 @@ function lib:CreateSection(SectionName)
 								end
 							end
 						end
-					else
+					--[[else
 						for i,v in pairs(lib.KeyBinds) do
 							if v[1] and v[2] then
 								if v[1] == Input.KeyCode then
 									v[2](true)
 								end
 							end
-						end
+						end]]
 					end
 				end
 			end
 		end
 	end)
-	UserInputService.InputEnded:Connect(function(Input)
+	--[[UserInputService.InputEnded:Connect(function(Input)
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 then
 			if Section.KeybindBusy and Section.CurrentlySelectedObject then else
 				for i,v in pairs(lib.KeyBinds) do
@@ -639,12 +639,60 @@ function lib:CreateSection(SectionName)
 				end
 			end
 		end
-	end)
+	end)]]
 	
 	return Section
 end
 
 UserInputService.InputBegan:Connect(function(Input)
+	if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+		local Pass = true
+		for i,v in pairs(lib.Sections) do
+			if v.KeybindBusy then
+				Pass = false
+			end
+		end
+		if lib.Focused then Pass = false end
+		if Pass then
+			for i,v in pairs(lib.KeyBinds) do
+				if v[1] == "LMB" then
+					v[2](false)
+				end
+			end
+		end
+	end
+	if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+		local Pass = true
+		for i,v in pairs(lib.Sections) do
+			if v.KeybindBusy then
+				Pass = false
+			end
+		end
+		if lib.Focused then Pass = false end
+		if Pass then
+			for i,v in pairs(lib.KeyBinds) do
+				if v[1] == "RMB" then
+					v[2](false)
+				end
+			end
+		end
+	end
+	if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+		local Pass = true
+		for i,v in pairs(lib.Sections) do
+			if v.KeybindBusy then
+				Pass = false
+			end
+		end
+		if lib.Focused then Pass = false end
+		if Pass then
+			for i,v in pairs(lib.KeyBinds) do
+				if v[1] == "MMB" then
+					v[2](false)
+				end
+			end
+		end
+	end
 	if Input.UserInputType == Enum.UserInputType.Keyboard then
 		if Input.KeyCode == lib.BindKeycode then
 			lib.MainGUIInstance.Visible = not lib.MainGUIInstance.Visible
@@ -678,6 +726,87 @@ UserInputService.InputBegan:Connect(function(Input)
 				lib.Focused = true
 				for i,v in pairs(lib.Sections[lib.CurrentSectionNumber][2].Objects) do
 					v.Visible = true
+				end
+			end
+		end
+		local Pass = true
+		for i,v in pairs(lib.Sections) do
+			if v.KeybindBusy then
+				Pass = false
+			end
+		end
+		if lib.Focused then Pass = false end
+		if Pass then
+			for i,v in pairs(lib.KeyBinds) do
+				if v[1] == Input.KeyCode then
+					v[2](false)
+				end
+			end
+		end
+	end
+end)
+
+UserInputService.InputEnded:Connect(function(Input)
+	if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+		local Pass = true
+		for i,v in pairs(lib.Sections) do
+			if v.KeybindBusy then
+				Pass = false
+			end
+		end
+		if lib.Focused then Pass = false end
+		if Pass then
+			for i,v in pairs(lib.KeyBinds) do
+				if v[1] == "LMB" then
+					v[2](true)
+				end
+			end
+		end
+	end
+	if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+		local Pass = true
+		for i,v in pairs(lib.Sections) do
+			if v.KeybindBusy then
+				Pass = false
+			end
+		end
+		if lib.Focused then Pass = false end
+		if Pass then
+			for i,v in pairs(lib.KeyBinds) do
+				if v[1] == "RMB" then
+					v[2](true)
+				end
+			end
+		end
+	end
+	if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+		local Pass = true
+		for i,v in pairs(lib.Sections) do
+			if v.KeybindBusy then
+				Pass = false
+			end
+		end
+		if lib.Focused then Pass = false end
+		if Pass then
+			for i,v in pairs(lib.KeyBinds) do
+				if v[1] == "MMB" then
+					v[2](true)
+				end
+			end
+		end
+	end
+	if Input.UserInputType == Enum.UserInputType.Keyboard then
+		local Pass = true
+		for i,v in pairs(lib.Sections) do
+			if v.KeybindBusy then
+				Pass = false
+			end
+		end
+		if lib.Focused then Pass = false end
+		if Pass then
+			for i,v in pairs(lib.KeyBinds) do
+				if v[1] == Input.KeyCode then
+					v[2](true)
 				end
 			end
 		end
