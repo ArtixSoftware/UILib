@@ -1,4 +1,4 @@
---credit me you dumb fucks 
+--Credit me or I will ruin you
 local lib = {}
 
 local UserInputService = game:GetService("UserInputService")
@@ -653,7 +653,6 @@ UserInputService.InputBegan:Connect(function(Input)
 				Pass = false
 			end
 		end
-		if lib.Focused then Pass = false end
 		if Pass then
 			for i,v in pairs(lib.KeyBinds) do
 				if v[1] == "LMB" then
@@ -669,7 +668,6 @@ UserInputService.InputBegan:Connect(function(Input)
 				Pass = false
 			end
 		end
-		if lib.Focused then Pass = false end
 		if Pass then
 			for i,v in pairs(lib.KeyBinds) do
 				if v[1] == "RMB" then
@@ -685,7 +683,6 @@ UserInputService.InputBegan:Connect(function(Input)
 				Pass = false
 			end
 		end
-		if lib.Focused then Pass = false end
 		if Pass then
 			for i,v in pairs(lib.KeyBinds) do
 				if v[1] == "MMB" then
@@ -736,7 +733,6 @@ UserInputService.InputBegan:Connect(function(Input)
 				Pass = false
 			end
 		end
-		if lib.Focused then Pass = false end
 		if Pass then
 			for i,v in pairs(lib.KeyBinds) do
 				if v[1] == Input.KeyCode then
@@ -755,7 +751,6 @@ UserInputService.InputEnded:Connect(function(Input)
 				Pass = false
 			end
 		end
-		if lib.Focused then Pass = false end
 		if Pass then
 			for i,v in pairs(lib.KeyBinds) do
 				if v[1] == "LMB" then
@@ -771,7 +766,6 @@ UserInputService.InputEnded:Connect(function(Input)
 				Pass = false
 			end
 		end
-		if lib.Focused then Pass = false end
 		if Pass then
 			for i,v in pairs(lib.KeyBinds) do
 				if v[1] == "RMB" then
@@ -787,7 +781,6 @@ UserInputService.InputEnded:Connect(function(Input)
 				Pass = false
 			end
 		end
-		if lib.Focused then Pass = false end
 		if Pass then
 			for i,v in pairs(lib.KeyBinds) do
 				if v[1] == "MMB" then
@@ -803,7 +796,6 @@ UserInputService.InputEnded:Connect(function(Input)
 				Pass = false
 			end
 		end
-		if lib.Focused then Pass = false end
 		if Pass then
 			for i,v in pairs(lib.KeyBinds) do
 				if v[1] == Input.KeyCode then
