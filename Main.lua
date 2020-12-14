@@ -19,7 +19,7 @@ function lib:CreateGui(ProductTextInput)
 	local Frame = Instance.new("Frame")
 	local ProductText = Instance.new("TextLabel")
 
-	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") -- game.CoreGui
+	ScreenGui.Parent = game.CoreGui
 	ScreenGui.ResetOnSpawn = false
 
 	Frame.Parent = ScreenGui
