@@ -1,3 +1,4 @@
+--credit me you dumb fucks
 local lib = {}
 
 local UserInputService = game:GetService("UserInputService")
