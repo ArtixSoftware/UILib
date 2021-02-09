@@ -17,6 +17,9 @@ lib.KeyBinds = {}
 
 function lib:CreateGui(ProductTextInput)
 	local ScreenGui = Instance.new("ScreenGui")
+	if syn then
+		pcall(syn.protect_gui, ScreenGui)
+	end
 	local Frame = Instance.new("Frame")
 	local ProductText = Instance.new("TextLabel")
 
@@ -59,6 +62,7 @@ function lib:CreateGui(ProductTextInput)
 	
 	lib.MainGUIInstance = Frame
 	lib.CurrentMainObject = MainGUI
+	return ScreenGui
 end
 
 function lib:Bind(KeyCode)
